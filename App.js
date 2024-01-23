@@ -1364,9 +1364,9 @@ const resList = [
 
 const ResCard = (props) => {
   // Destructuring the props
-  const { resData } = props;
-  const { cloudinaryImageId, name, avgRating, cuisines } = resData.info;
-  const { deliveryTime } = resData.info.sla;
+  const { resList } = props;
+  const { cloudinaryImageId, name, avgRating, cuisines } = resList.info;
+  const { deliveryTime } = resList.info.sla;
 
   return (
     <div className="res-card">
@@ -1401,7 +1401,7 @@ const Body = () => {
       <div className="res-container">
         {/* This map function will loop over the resList object for every restuarant */}
         {resList.map((resList) => (
-          <ResCard resData = {resList}/>
+          <ResCard key={resList.info.id} resList = {resList}/>
         ))}
       </div>
     </div>
