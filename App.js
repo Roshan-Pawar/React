@@ -1399,27 +1399,10 @@ const Body = () => {
     <div className="body">
       <div className="search">Search !!</div>
       <div className="res-container">
-        {/* this will contain multiple restuarant cards */}
-        <ResCard resData={resList[0]} />
-        <ResCard resData={resList[1]} />
-        <ResCard resData={resList[2]} />
-        <ResCard resData={resList[3]} />
-        <ResCard resData={resList[4]} />
-        <ResCard resData={resList[5]} />
-        <ResCard resData={resList[6]} />
-        <ResCard resData={resList[7]} />
-        <ResCard resData={resList[8]} />
-        <ResCard resData={resList[9]} />
-        <ResCard resData={resList[10]} />
-        <ResCard resData={resList[11]} />
-        <ResCard resData={resList[12]} />
-        <ResCard resData={resList[13]} />
-        <ResCard resData={resList[14]} />
-        <ResCard resData={resList[15]} />
-        <ResCard resData={resList[16]} />
-        <ResCard resData={resList[17]} />
-        <ResCard resData={resList[18]} />
-        <ResCard resData={resList[19]} />
+        {/* This map function will loop over the resList object for every restuarant */}
+        {resList.map((resList) => (
+          <ResCard resData = {resList}/>
+        ))}
       </div>
     </div>
   );
