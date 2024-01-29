@@ -1,90 +1,109 @@
-body{
-    font-family: ProximaNova,arial,Helvetica Neue,sans-serif;
+body {
+  font-family: ProximaNova, arial, Helvetica Neue, sans-serif;
 }
 
-h1,h2,h3,h4,h5,h6 {
-    margin:0;
-    padding:0;
- }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    border: 1px black solid;
+  display: flex;
+  justify-content: space-between;
+  border: 1px black solid;
 }
 
 .brand-logo {
-    width: 200px;
+  width: 200px;
 }
 .cart-logo {
-    width: 25px;
+  width: 25px;
 }
 
 .nav-items {
-    justify-content: center;
+  justify-content: center;
 }
 
 .nav-items > ul {
-    display: flex;
-    list-style: none;
-    padding: 20px;
-    justify-content: right;
+  display: flex;
+  list-style: none;
+  padding: 20px;
+  justify-content: right;
 }
 
 .nav-items > ul > li {
-    font-size: 20px;
-    margin: 0 0 0 55px;
-    justify-content: right;
+  font-size: 20px;
+  margin: 0 0 0 55px;
+  justify-content: right;
 }
 
 .search {
-    padding: 30px;
-    text-align: center;
+  padding: 30px;
+  text-align: center;
 }
 
 .res-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
-    margin: 32px 115px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin: 32px 115px;
 }
 
 .res-card {
-    width: 250px;
-    height: 275px;
-    transition: transform 0.05s ease;
+  width: 250px;
+  height: 275px;
+  transition: transform 0.05s ease;
 }
 
 .res-card:hover {
-    transform: scale(0.95);
-    cursor: pointer;
+  transform: scale(0.95);
+  cursor: pointer;
 }
 
 .res-img {
-    width : 100%;
-    height: 60%;
-    border-radius: 5%;
-    object-fit: cover;
+  width: 100%;
+  height: 60%;
+  border-radius: 5%;
+  object-fit: cover;
 }
 
 .res-name {
-    font-weight: 300;
+  font-weight: 300;
 }
 
 .res-rating {
-    float: left;
-    padding: 0 3px;
-    font-weight: 100;
+  float: left;
+  padding: 0 3px;
+  font-weight: 100;
 }
 .res-dilivery-time {
-    float: left;
-    margin: 0 5px;
-    padding-top: 5px;
-    font-weight: 200;
+  float: left;
+  margin: 0 5px;
+  padding-top: 5px;
+  font-weight: 200;
 }
 
 .res-cusine {
-    clear: both;
-    font-weight: 10;
-    padding-top: 4px;
+  clear: both;
+  font-weight: 10;
+  padding-top: 4px;
+}
+
+.filter button {
+  cursor: pointer;
+  padding: 5 10px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 5px;
+  transition: transform 0.05s ease;
+}
+
+.filter button:hover {
+  transform: scale(1.08);
+  border: 1px solid black;
 }
