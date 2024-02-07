@@ -13,15 +13,8 @@ const Header = () => {
         <div className="nav-items">
           <ul>
             <li>Home</li>
-            <li>
-              <img
-                className="cart-logo"
-                src="https://i.pinimg.com/originals/15/4f/df/154fdf2f2759676a96e9aed653082276.png"
-                alt="cart"
-              />
-            </li>
-            <li>Log in</li>
-            <li>Sign up</li>
+            <li>🧺</li>
+            <li>Account</li>
           </ul>
         </div>
       </div>
