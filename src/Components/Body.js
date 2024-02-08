@@ -4,6 +4,7 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
   const [listOfRes, setlistOfRes] = useState([]);
+  const [allListOfRes, setallListOfRes] = useState([]);
 
   useEffect(() => {
     fetchData();
@@ -16,20 +17,18 @@ const Body = () => {
       const json = await data.json();
       //optional chaining
       setlistOfRes(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+      setallListOfRes(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   };
-
-  if (listOfRes.length === 0) {
-    return <Shimmer/>
-  }
-
-  return (
+  
+  // Shimmer UI using ternary operator
+  
+  return (listOfRes.length === 0) ? <Shimmer/> : (
     <div className="body">
       <div className="search">Search !!</div>
       <div className="filter">
         <button
           className="all-filter"
           onClick={() => {
-            const allListOfRes = resList;
             setlistOfRes(allListOfRes);
           }}
         >
