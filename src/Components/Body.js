@@ -5,6 +5,7 @@ import Shimmer from "./Shimmer";
 const Body = () => {
   const [listOfRes, setlistOfRes] = useState([]);
   const [allListOfRes, setallListOfRes] = useState([]);
+  const [searchText, setSearchText] = useState([]);
 
   useEffect(() => {
     fetchData();
@@ -24,7 +25,24 @@ const Body = () => {
   
   return (listOfRes.length === 0) ? <Shimmer/> : (
     <div className="body">
-      <div className="search">Search !!</div>
+      <div className="search">
+        <input
+          type="text" 
+          placeholder="Search" 
+          className="search-box" 
+          value={searchText}
+          onChange={(event) => {
+            setSearchText(event.target.value);
+          }}
+        />
+        <button type="submit" className="search-submit" onClick={() => {
+          const searchList = allListOfRes.filter((res) =>
+            res.info.name.toLowerCase().includes(searchText.toLowerCase())
+          );
+
+          setlistOfRes(searchList);
+        }}>🔍</button>
+      </div>
       <div className="filter">
         <button
           className="all-filter"
