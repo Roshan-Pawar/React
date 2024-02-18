@@ -5,7 +5,7 @@ import Shimmer from "./Shimmer";
 const Body = () => {
   const [listOfRes, setlistOfRes] = useState([]);
   const [allListOfRes, setallListOfRes] = useState([]);
-  const [searchText, setSearchText] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     fetchData();

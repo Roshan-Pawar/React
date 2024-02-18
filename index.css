@@ -178,7 +178,7 @@
   }
 
   .search {
-    padding: 2vh;
+    padding: 3vh;
   }
 
   .filter {
@@ -192,14 +192,15 @@
 
   .res-card {
     width: 30vw;
-    height: 50vh;
+    height: 20vh;
     transition: transform 0.05s ease;
     margin: 0 5vw 3vh 5vw;
+    margin-bottom: 6rem;
   }
 
   .res-name {
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: rgba(0, 0, 0, 0.85);
   }
 
@@ -207,7 +208,7 @@
     float: left;
     padding: 0 3px;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 1rem;
     color: rgba(0, 0, 0, 0.8);
   }
   .res-dilivery-time {
@@ -223,7 +224,7 @@
     clear: both;
     font-weight: 10;
     padding-top: 4px;
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: rgba(2, 6, 12, 0.6);
   }
 
