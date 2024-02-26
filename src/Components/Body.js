@@ -1,6 +1,8 @@
 import ResCard from "./Rescard";
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { RES_API } from "../Utils/constants";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [listOfRes, setlistOfRes] = useState([]);
@@ -12,36 +14,46 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(
-      "https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.07480&lng=72.88560&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
-    
-      const json = await data.json();
-      //optional chaining
-      setlistOfRes(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-      setallListOfRes(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    const data = await fetch(RES_API);
+    const json = await data.json();
+    //optional chaining
+    setlistOfRes(
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setallListOfRes(
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
-  
+
   // Shimmer UI using ternary operator
-  
-  return (listOfRes.length === 0) ? <Shimmer/> : (
+
+  return listOfRes.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="search">
         <input
-          type="text" 
-          placeholder="Search" 
-          className="search-box" 
+          type="text"
+          placeholder="Search"
+          className="search-box"
           value={searchText}
           onChange={(event) => {
             setSearchText(event.target.value);
           }}
         />
-        <button type="submit" className="search-submit" onClick={() => {
-          const searchList = allListOfRes.filter((res) =>
-            res.info.name.toLowerCase().includes(searchText.toLowerCase())
-          );
+        <button
+          type="submit"
+          className="search-submit"
+          onClick={() => {
+            const searchList = allListOfRes.filter((res) =>
+              res.info.name.toLowerCase().includes(searchText.toLowerCase())
+            );
 
-          setlistOfRes(searchList);
-        }}>🔍</button>
+            setlistOfRes(searchList);
+          }}
+        >
+          🔍
+        </button>
       </div>
       <div className="filter">
         <button
@@ -80,7 +92,9 @@ const Body = () => {
       <div className="res-container">
         {/* This map function will loop over the resList object for every restuarant */}
         {listOfRes.map((resList) => (
-          <ResCard key={resList.info.id} resList={resList} />
+          <Link key={resList.info.id} to={/restaurants/ + resList.info.id}>
+            <ResCard resList={resList} />
+          </Link>
         ))}
       </div>
     </div>
