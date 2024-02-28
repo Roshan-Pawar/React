@@ -1,29 +1,17 @@
 import ResCard from "./Rescard";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Shimmer from "./Shimmer";
-import { RES_API } from "../Utils/constants";
 import { Link } from "react-router-dom";
+import useNetworkStatus from "../Utils/useNetworkStatus";
+import useResData from "../Utils/useResData";
 
 const Body = () => {
-  const [listOfRes, setlistOfRes] = useState([]);
-  const [allListOfRes, setallListOfRes] = useState([]);
   const [searchText, setSearchText] = useState("");
+ // This useResData custom hook is used to fetch the Restaurant list for home page
+  const { listOfRes, setlistOfRes, allListOfRes, setallListOfRes } = useResData();
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    const data = await fetch(RES_API);
-    const json = await data.json();
-    //optional chaining
-    setlistOfRes(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setallListOfRes(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-  };
+  const networkStatus = useNetworkStatus();
+  if (networkStatus === false) return <h1>you are offline</h1>;
 
   // Shimmer UI using ternary operator
 
