@@ -7,16 +7,16 @@ const ResCard = (props) => {
   const { deliveryTime } = resList.info.sla;
 
   return (
-    <div className="res-card">
+    <div className="w-52 h-62 mx-3 my-4 rounded-xl shadow-lg hover:scale-95 hover:border-pink-400 border-2">
       <img
-        className="res-img"
+        className="w-52 h-36 rounded-xl object-cover"
         src={CLOUDINARY_URL + cloudinaryImageId}
         alt="res-img"
       />
-      <h3 className="res-name">{name}</h3>
-      <h4 className="res-rating">🌟{avgRating}</h4>
-      <h4 className="res-dilivery-time">{deliveryTime} min</h4>
-      <h4 className="res-cusine">{cuisines.join(", ")}</h4>
+      <h3 className="font-semibold">{name}</h3>
+      <h4 className="float-left">🌟{avgRating}</h4>
+      <h4 className="float-left px-2">{deliveryTime} min</h4>
+      <h4 className="clear-both font-light text-gray-950	">{cuisines.slice(0, 3).join(", ")}</h4>
     </div>
   );
 };

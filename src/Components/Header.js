@@ -6,23 +6,22 @@ const Header = () => {
   const networkStatus = useNetworkStatus();
 
   return (
-    <div className="header">
-      <div className="logo-container">
-        <img className="brand-logo" src={LOGO_URL} alt="BrandLogo" />
+    <div className="flex justify-between shadow-md">
+      <div>
+        <img className="w-56" src={LOGO_URL} alt="BrandLogo" />
       </div>
-      <div className="nav-items">
-        <ul>
-          <li>
+      <div>
+        <ul className="flex my-10">
+          <li className="px-3 hover:cursor-text">
             Internet : {networkStatus ? "🟢" : "🔴"}
           </li>
-          <li>
+          <li className="px-3 hover:text-pink-400">
             <Link to="/">Home</Link>
           </li>
-          <li>🧺</li>
-          <li>
+          <li className="px-3 hover:text-pink-400">
             <Link to="/grocery">Grocery</Link>
           </li>
-          <li>
+          <li className="px-3 hover:text-pink-400">
             <Link to="/about">About US</Link>
           </li>
         </ul>

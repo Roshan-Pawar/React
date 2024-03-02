@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import Shimmer from "./Shimmer";
 import useResMenu from "../Utils/useResMenu";
+import Shimmer from "./Shimmer";
 
 const ResMenu = () => {
   const { resId } = useParams();
@@ -16,11 +16,11 @@ const ResMenu = () => {
       ?.card;
 
   return (
-    <div>
-      <h1>{name}</h1>
-      <h3>{cuisines.join(", ")}</h3>
-      <h3>Menu</h3>
-      <ul>
+    <div className="px-10">
+      <h1 className="font-bold text-2xl ">{name}</h1>
+      <h3 className="font-semibold text-lg">{cuisines.join(", ")}</h3>
+      <h3 className="font-bold text-lg">Menu</h3>
+      <ul className="font-semibold text-base">
         {itemCards.map((item) => (
           <li key={item.card.info.id}>
             {item?.card?.info?.name} - {"Rs."}

@@ -43,9 +43,9 @@ const Body = () => {
           🔍
         </button>
       </div>
-      <div className="filter">
+      <div className="mx-40 mt-10">
         <button
-          className="all-filter"
+          className="px-2 mx-2 h-8 w-auto rounded-full shadow-xl hover:bg-pink-400 hover:text-white"
           onClick={() => {
             setlistOfRes(allListOfRes);
           }}
@@ -54,7 +54,7 @@ const Body = () => {
         </button>
 
         <button
-          className="rating-filter"
+          className="px-2 mx-2 h-8 w-auto rounded-full shadow-xl hover:bg-pink-400 hover:text-white"
           onClick={() => {
             const topRatedListOfRes = listOfRes.filter(
               (res) => res.info.avgRating > 4
@@ -66,7 +66,7 @@ const Body = () => {
         </button>
 
         <button
-          className="fast-filter"
+          className="px-2 mx-2 h-8 w-auto rounded-full shadow-xl hover:bg-pink-400 hover:text-white"
           onClick={() => {
             const fastListOfRes = listOfRes.filter(
               (res) => res.info.sla.deliveryTime < 30
@@ -77,7 +77,7 @@ const Body = () => {
           Fast Delivery
         </button>
       </div>
-      <div className="res-container">
+      <div className="mx-40 my-10 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {/* This map function will loop over the resList object for every restuarant */}
         {listOfRes.map((resList) => (
           <Link key={resList.info.id} to={/restaurants/ + resList.info.id}>
