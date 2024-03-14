@@ -1,4 +1,4 @@
-import ResCard from "./Rescard";
+import ResCard, { withVegLabel } from "./Rescard";
 import { useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -7,8 +7,11 @@ import useResData from "../Utils/useResData";
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
- // This useResData custom hook is used to fetch the Restaurant list for home page
-  const { listOfRes, setlistOfRes, allListOfRes, setallListOfRes } = useResData();
+  // This useResData custom hook is used to fetch the Restaurant list for home page
+  const { listOfRes, setlistOfRes, allListOfRes, setallListOfRes } =
+    useResData();
+  
+  const ResCardVeg = withVegLabel(ResCard);
 
   const networkStatus = useNetworkStatus();
   if (networkStatus === false) return <h1>you are offline</h1>;
@@ -33,9 +36,15 @@ const Body = () => {
           type="submit"
           className="search-submit"
           onClick={() => {
-            const searchList = allListOfRes.filter((res) =>
-              res.info.name.toLowerCase().includes(searchText.toLowerCase())
-            );
+            const searchList = allListOfRes.filter((res) => {
+              const nameMatch = res.info.name
+                .toLowerCase()
+                .includes(searchText.toLowerCase());
+              const cuisinesMatch = res.info.cuisines.some((cuisine) =>
+                cuisine.toLowerCase().includes(searchText.toLowerCase())
+              );
+              return nameMatch || cuisinesMatch;
+            });
 
             setlistOfRes(searchList);
           }}
@@ -81,7 +90,11 @@ const Body = () => {
         {/* This map function will loop over the resList object for every restuarant */}
         {listOfRes.map((resList) => (
           <Link key={resList.info.id} to={/restaurants/ + resList.info.id}>
-            <ResCard resList={resList} />
+            {resList.info.veg ? (
+              <ResCardVeg resList={resList} />
+            ) : (
+              <ResCard resList={resList} />
+            )}
           </Link>
         ))}
       </div>
