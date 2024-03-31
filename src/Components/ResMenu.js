@@ -12,10 +12,6 @@ const ResMenu = () => {
   const { name, cuisines, costForTwoMessage } =
     menu?.data?.cards[2]?.card?.card?.info;
 
-  const { itemCards } =
-    menu?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
-      ?.card;
-
   const menuCategory =
     menu?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
       (c) =>
@@ -30,7 +26,7 @@ const ResMenu = () => {
         {cuisines.join(", ")} - {costForTwoMessage}
       </h3>
 
-      {menuCategory.map((category, index) => (
+      {menuCategory.map(( category ) => (
         <RestaurantMenuCategory
           key={category?.card?.card?.title}
           data={category?.card?.card}

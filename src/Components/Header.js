@@ -1,9 +1,13 @@
 import { LOGO_URL } from "../Utils/constants";
 import { Link } from "react-router-dom";
 import useNetworkStatus from "../Utils/useNetworkStatus";
+import { useContext } from "react";
+import UserContext from "../Utils/UserContext";
 
 const Header = () => {
   const networkStatus = useNetworkStatus();
+
+  const {loggedInUser} = useContext(UserContext);
 
   return (
     <div className="flex justify-between shadow-md">
@@ -23,6 +27,9 @@ const Header = () => {
           </li>
           <li className="px-3 hover:text-pink-400">
             <Link to="/about">About US</Link>
+          </li>
+          <li className="px-3 font-semibold hover:text-pink-400">
+            {loggedInUser}
           </li>
         </ul>
       </div>
