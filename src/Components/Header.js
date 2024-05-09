@@ -3,11 +3,15 @@ import { Link } from "react-router-dom";
 import useNetworkStatus from "../Utils/useNetworkStatus";
 import { useContext } from "react";
 import UserContext from "../Utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const networkStatus = useNetworkStatus();
 
   const {loggedInUser} = useContext(UserContext);
+
+  // Subscribing to the redux store using a selector
+  const cartItems = useSelector((store) => store.cart.items);
 
   return (
     <div className="flex justify-between shadow-md">
@@ -27,6 +31,9 @@ const Header = () => {
           </li>
           <li className="px-3 hover:text-pink-400">
             <Link to="/about">About US</Link>
+          </li>
+          <li className="px-3 font-semibold hover:text-pink-400">
+            <Link to="/cart">Cart- ({cartItems.length} Items)</Link>
           </li>
           <li className="px-3 font-semibold hover:text-pink-400">
             {loggedInUser}

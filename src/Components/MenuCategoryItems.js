@@ -1,7 +1,16 @@
 import { CLOUDINARY_URL } from "../Utils/constants";
+import { useDispatch } from "react-redux";
+import { addItem } from "../Utils/cartSlice";
 
 const MenuCategoryItems = ({ items }) => {
-  console.log(items);
+
+  const dispatch = useDispatch();
+
+  const handleAddItem = (itemForCart) => {
+    // Dispatch an action when ADD button clicked
+    dispatch(addItem(itemForCart));
+  }
+  
   return (
     <div>
       {items.map((item) => (
@@ -37,7 +46,14 @@ const MenuCategoryItems = ({ items }) => {
               </span>
             </div>
           </div>
-          <div className="w-3/12 flex justify-center">
+          <div className=" relative w-3/12 flex justify-center">
+            <div className="absolute left-15 z-10 px-4 py-1 rounded-md bg-white text-green-600 " >
+              <button
+               onClick={() => handleAddItem(item)}
+              >
+                ADD
+              </button>
+            </div>
             <img
               src={CLOUDINARY_URL + item?.card?.info?.imageId}
               className="h-2/4 w-3/4 mt-2 rounded-xl object-cover"
